@@ -182,7 +182,6 @@ function comenzar() {
         if(!isNaN(distanciaTotal))
             localStorage.setItem("podo_distanciaTotal", distanciaTotal);        
         if(!isNaN(distanciaHoy))
-            localStorage.setItem("podo_hoy", distanciaHoy);
             localStorage.setItem("podo_"+hoy, distanciaHoy);
         console.log(wpid);
         if (wpid !== null || wpid !== undefined) {
@@ -221,11 +220,11 @@ function init() {
     hoy = fecha.getFullYear()+""+ mes +""+fecha.getDate();
     console.log(hoy);
     
-    if (localStorage.getItem("podo_hoy")) {
-        distanciaHoy = redondeo(localStorage.getItem("podo_hoy"), 3);
+    if (localStorage.getItem("podo_"+hoy)) {
+        distanciaHoy = redondeo(localStorage.getItem("podo_"+hoy), 3);
     } else {
         distanciaHoy = 0;
-        localStorage.setItem("podo_hoy", distanciaHoy);
+        localStorage.setItem("podo_"+hoy, distanciaHoy);
     }    
 
     recorrido.innerHTML = distanciaHoy + " km hoy<br/>" +distanciaTotal + " km en total";
