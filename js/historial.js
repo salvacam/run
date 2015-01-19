@@ -24,7 +24,7 @@ function eliminar() {
                 }
             }
         }
-        location.reload();
+        init();
     }
 }
 
@@ -36,14 +36,8 @@ function borrarUnidad(id) {
     }
 }
 
-function datosFic() {
-    localStorage.setItem("podo_20150112", "0.234");
-    localStorage.setItem("podo_20150114", "2.234");
-    localStorage.setItem("podo_20150110", "1.234");
-}
 
 function verDatos() {
-    //datosFic();
     listaDist = [];
     aux = 0;
     if (localStorage.length > 0) {
@@ -147,6 +141,5 @@ function init() {
         eliminar()
     });
 }
-
 
 window.addEventListener("load", init);

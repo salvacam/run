@@ -1,5 +1,5 @@
 {
-	"version": "0.4",
+	"version": "0.4c",
     "name":"Podometro",
     "description":"Podometro, calcula distancia y visualiza (si quiere) el recorrido en google map, guarda el registro de la distancia recorrida por días",
     "launch_path" : "/index.html",

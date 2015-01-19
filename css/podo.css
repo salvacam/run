@@ -12,7 +12,7 @@ header {
     padding: 0;
     height: 64px;
     text-align: center;
-    background: #768056;
+    background: #528EC8;
     min-width: 320px;
 }
 header #btIniciar,
@@ -39,12 +39,6 @@ header #btHistorial{
     border-radius: 5%;
     cursor: pointer;
     width: 55px;
-}
-
-.botones:hover{
-    /* quitar para movil*/
-    background: #adc377;      
-    border: 2px solid #545454;
 }
 
 #cajaMapa {

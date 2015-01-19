@@ -1,25 +1,21 @@
 var inicio = true,
-    verMapa = true; //variable para controlar parado y comienzo
+    verMapa = true; 
 var coordenadas;
-var wpid; // variable para guardar watchPosition
-var btIniciar, recorrido, btBorrar, btHistorial, btMostrar, cajaMapa; //elementos html
-var info, cambiar, borrar; // elemento html, solo para depurar
-var distanciaTotal = 0; // guardar en local y recuperar
+var wpid; 
+var btIniciar, recorrido, btBorrar, btHistorial, btMostrar, cajaMapa; 
+var info, cambiar, borrar; 
+var distanciaTotal = 0; 
 var distanciaActual = 0;
 var hoy, distanciaHoy;
 var precision = 80;
-var mapa; // va a contener el mapa Google después de crearlo
+var mapa; 
 var marcadorInicial, marcadorFinal;
 var polylinea, polylineaCoord = [];
 var texto = "<br/>Para iniciar/parar el podometro pulsa<br/> <img src='./img/iniciar.png'>" +
     "<br/><br/><br/>Para mostrar/ocultar el mapa pulsa<br/> <img src='./img/mapa.png'>" +
     "<br/>Inicio: <img src='./img/pedestriancrossing.png'> Actual: <img src='./img/pin.png'>" +
     "<br/><br/><br/>Para ver historial de distancias pulsa<br/> <img src='./img/historial.png'>";
-var texto1 = "<br/>Para iniciar/parar el podometro pulsa<br/> <img src='./img/iniciar.png'>" +
-    "<br/><br/><br/>Para mostrar/ocultar el mapa pulsa<br/> <img src='./img/mapa.png'>" +
-    "<br/>Inicio: <img src='./img/pedestriancrossing.png'> Actual: <img src='./img/pin.png'>";
-
-
+    
 function redondeo(numero, decimales) {
     var flotante = parseFloat(numero);
     var resultado = Math.round(flotante * Math.pow(10, decimales)) / Math.pow(10, decimales);
@@ -42,7 +38,6 @@ function gradosARadianes(grados) {
     var radianes = (grados * Math.PI) / 180;
     return radianes;
 }
-
 
 function mostrarMapa(posicion) {
     if (verMapa) {
@@ -107,14 +102,10 @@ function ver1(posicion) {
         }
         var distanciaCalculada = parseFloat(redondeo(calcularDistancia(coordenadas, coordenadasNew), 3));
         if (!isNaN(distanciaCalculada)) {
-          //  if(!isNan(redondeo(distanciaActual + distanciaCalculada, 3))){
-                distanciaActual = redondeo(distanciaActual + distanciaCalculada, 3);
-                distanciaHoy = redondeo(distanciaHoy + distanciaCalculada, 3);
-          //  }
-          //  if(!isNaN(redondeo(distanciaTotal + distanciaCalculada, 3))){
-                distanciaTotal = redondeo(distanciaTotal + distanciaCalculada, 3);
-          //  }
-            recorrido.innerHTML = distanciaActual + " km ahora<br/>" + distanciaHoy + " km hoy<br/>" + distanciaTotal + " km en total";
+            distanciaActual = redondeo(distanciaActual + distanciaCalculada, 3);
+            distanciaHoy = redondeo(distanciaHoy + distanciaCalculada, 3);
+            distanciaTotal = redondeo(distanciaTotal + distanciaCalculada, 3);
+			recorrido.innerHTML = distanciaActual + " km ahora<br/>" + distanciaHoy + " km hoy<br/>" + distanciaTotal + " km en total";
         }
 
         coordenadas = {
@@ -125,8 +116,6 @@ function ver1(posicion) {
 }
 
 function ver(posicion) {
-    console.log("ver");
-    // Obtenemos latitud y longitud del objeto position.coords
     coordenadas = {
         latitude: posicion.coords.latitude,
         longitude: posicion.coords.longitude
@@ -163,7 +152,6 @@ function ver(posicion) {
 }
 
 function comenzar() {
-    console.log("comenzar");
     if (inicio) {
         if (polylinea) {
             polylinea.setMap(null);
@@ -243,6 +231,5 @@ function init() {
         cajaMapa.innerHTML = "No hay soporte de geolocalización";
     }
 }
-
 
 window.addEventListener("load", init);
