@@ -119,9 +119,9 @@ function ver1(posicion) {
             longitude: posicion.coords.longitude
         }
 
-        alert('notificacion_0');
+        //alert('notificacion_0');
         if (distanciaActual >= notificacionesKm) {
-        alert('pre_notificacion');
+        //alert('pre_notificacion');
             notifyMe(distanciaActual);
             notificacionesKm = notificacionesKm + 0.01;
             //notificacionesKm = 1 + notificacionesKm;
@@ -321,7 +321,7 @@ function mostrarHistorial() {
 }
 
 function notifyMe(numeroKm) {
-    alert('notificacion');
+    alert(numeroKm);
     let textNotification = numeroKm + " km";
 
     if (Notification) {
