@@ -108,15 +108,9 @@ function ver1(posicion) {
         //var distanciaCalculada = parseFloat(redondeo(calcularDistancia(coordenadas, coordenadasNew), 3));
         var distanciaCalculada = parseFloat(calcularDistancia(coordenadas, coordenadasNew));
         if (!isNaN(distanciaCalculada)) {
-            /*
             distanciaActual = redondeo(distanciaActual + distanciaCalculada, 3);
             distanciaHoy = redondeo(distanciaHoy + distanciaCalculada, 3);
             distanciaTotal = redondeo(distanciaTotal + distanciaCalculada, 3);
-            */
-
-            distanciaActual = distanciaActual + distanciaCalculada;
-            distanciaHoy = distanciaHoy + distanciaCalculada;
-            distanciaTotal = distanciaTotal + distanciaCalculada;
 			recorrido.innerHTML = distanciaActual + " km ahora<br/>" + distanciaHoy + " km hoy<br/>" + distanciaTotal + " km en total";
         }
 
@@ -125,8 +119,8 @@ function ver1(posicion) {
             longitude: posicion.coords.longitude
         }
 
-        if (distanciaTotal >= notificacionesKm) {
-            notifyMe(distanciaTotal);
+        if (distanciaActual >= notificacionesKm) {
+            notifyMe(distanciaActual);
             notificacionesKm = notificacionesKm + 0.25;
             //notificacionesKm = 1 + notificacionesKm;
         }
