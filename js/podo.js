@@ -322,6 +322,27 @@ function notifyMe(numeroKm) {
 
     let textNotification = numeroKm + " km";
 
+    if (Notification) {
+        if (Notification.permission !== "granted") {
+          Notification.requestPermission();
+        }
+        Notification.requestPermission(function(result) {
+          if (result === 'granted') {
+            navigator.serviceWorker.ready.then(function(registration) {
+              var title = "Parada " + busStop;
+              var options = {
+                body:  textNotification,
+                badge: "img/icon-48x48.png",
+                icon: "img/icon-48x48.png",
+                tag:  "Podometro"
+              };
+              registration.showNotification(title, options);              
+            });
+          }
+        });
+      }
+
+/*
     // Let's check if the browser supports notifications
     if (!("Notification" in window)) {
       alert("This browser does not support desktop notification");
@@ -341,7 +362,7 @@ function notifyMe(numeroKm) {
         }
       });
     }
-  
+  */
     // At last, if the user has denied notifications, and you 
     // want to be respectful there is no need to bother them any more.
   }
@@ -418,6 +439,14 @@ function init() {
     btBorrar.addEventListener("click", function () {
         eliminar()
     });
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('service-worker.js')
+          .then(function() {
+            //console.log('Service Worker Registered');
+          });
+      }
 }
 
 window.addEventListener("load", init);
