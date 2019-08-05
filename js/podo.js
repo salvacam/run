@@ -5,7 +5,7 @@ var wpid;
 var btIniciar, recorrido, btBorrar, btHistorial, btMostrar, cajaMapa; 
 var info, cambiar, borrar; 
 var distanciaTotal = 0; 
-var notificacionesKm = 0.25; // TODO change
+var notificacionesKm = 0.05; // TODO change
 var distanciaActual = 0;
 var hoy, distanciaHoy;
 var precision = 80;
@@ -121,7 +121,7 @@ function ver1(posicion) {
 
         if (distanciaActual >= notificacionesKm) {
             notifyMe(distanciaActual);
-            notificacionesKm = notificacionesKm + 0.25;
+            notificacionesKm = notificacionesKm + 0.05;
             //notificacionesKm = 1 + notificacionesKm;
         }
         
