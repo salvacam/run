@@ -5,7 +5,7 @@ var wpid;
 var btIniciar, recorrido, btBorrar, btHistorial, btMostrar, cajaMapa; 
 var info, cambiar, borrar; 
 var distanciaTotal = 0; 
-var notificacionesKm = 0.05; // TODO change
+var notificacionesKm = 0.01; // TODO change
 var distanciaActual = 0;
 var hoy, distanciaHoy;
 var precision = 80;
@@ -119,9 +119,11 @@ function ver1(posicion) {
             longitude: posicion.coords.longitude
         }
 
+        alert('notificacion_0');
         if (distanciaActual >= notificacionesKm) {
+        alert('pre_notificacion');
             notifyMe(distanciaActual);
-            notificacionesKm = notificacionesKm + 0.05;
+            notificacionesKm = notificacionesKm + 0.01;
             //notificacionesKm = 1 + notificacionesKm;
         }
         
@@ -319,7 +321,7 @@ function mostrarHistorial() {
 }
 
 function notifyMe(numeroKm) {
-
+    alert('notificacion');
     let textNotification = numeroKm + " km";
 
     if (Notification) {
@@ -329,7 +331,7 @@ function notifyMe(numeroKm) {
         Notification.requestPermission(function(result) {
           if (result === 'granted') {
             navigator.serviceWorker.ready.then(function(registration) {
-              var title = "Parada " + busStop;
+              var title = "Podometro";
               var options = {
                 body:  textNotification,
                 badge: "img/icon-48x48.png",
