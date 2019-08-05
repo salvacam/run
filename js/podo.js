@@ -5,6 +5,7 @@ var wpid;
 var btIniciar, recorrido, btBorrar, btHistorial, btMostrar, cajaMapa; 
 var info, cambiar, borrar; 
 var distanciaTotal = 0; 
+var notificacionesKm = 0.25; // TODO change
 var distanciaActual = 0;
 var hoy, distanciaHoy;
 var precision = 80;
@@ -123,10 +124,18 @@ function ver1(posicion) {
             latitude: posicion.coords.latitude,
             longitude: posicion.coords.longitude
         }
+
+        if (distanciaTotal >= notificacionesKm) {
+            notifyMe(distanciaTotal);
+            notificacionesKm = notificacionesKm + 0.25;
+            //notificacionesKm = 1 + notificacionesKm;
+        }
+        
     }
 }
 
 function ver(posicion) {
+    //notifyMe(distanciaTotal);
     coordenadas = {
         latitude: posicion.coords.latitude,
         longitude: posicion.coords.longitude
@@ -314,6 +323,34 @@ function mostrarHistorial() {
     cajaMapa.classList.toggle("hidden");
     textoHistorial.classList.toggle("hidden");
 }
+
+function notifyMe(numeroKm) {
+
+    let textNotification = numeroKm + " km";
+
+    // Let's check if the browser supports notifications
+    if (!("Notification" in window)) {
+      alert("This browser does not support desktop notification");
+    }
+    // Let's check whether notification permissions have already been granted
+    else if (Notification.permission === "granted") {
+      // If it's okay let's create a notification
+      var notification = new Notification(textNotification);
+    }
+  
+    // Otherwise, we need to ask the user for permission
+    else if (Notification.permission !== 'denied') {
+      Notification.requestPermission(function (permission) {
+        // If the user accepts, let's create a notification
+        if (permission === "granted") {
+          var notification = new Notification(textNotification);
+        }
+      });
+    }
+  
+    // At last, if the user has denied notifications, and you 
+    // want to be respectful there is no need to bother them any more.
+  }
 
 function init() {
     btIniciar = document.getElementById("btIniciar");
