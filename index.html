@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Podometro</title>    
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=5" />
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./css/podo.css" />
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <script src="./js/podo.js"></script>
+</head>
+
+<body>
+    <header id="cabeceraPrincipal">
+        <img src="./img/iniciar.png" alt="iniciar" id="btIniciar" class="botones">
+        <div id="recorrido">
+        </div>
+        <img src="./img/mapa.png" alt="mapa" id="btMostrar" class="botones">
+        
+            <img src="./img/historial.png" alt="historial" id="btHistorial" class="botones">
+        
+    </header>
+
+    <header id="cabeceraHistorial" class="hidden">
+        <img src="./img/atras.png" alt="atras" id="atrasHistorial" class="botones">        
+        <div id="recorridoHistorial">
+        </div>
+        <img src="./img/borrar.png" alt="borrar" id="btBorrar" class="botones">
+    </header>
+
+    <div id="cajaMapa">
+    </div>
+
+    <div id="textoHistorial" class="hidden">
+        <ul id="lista">
+        </ul>
+    </div>
+</body>
+
+</html>

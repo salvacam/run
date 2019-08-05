@@ -1,0 +1,25 @@
+{
+	"version": "0.4c",
+    "name":"Podometro",
+    "description":"Podometro, calcula distancia y visualiza (si quiere) el recorrido en google map, guarda el registro de la distancia recorrida por días",
+    "launch_path" : "/index.html",
+    "icons":{
+    "16":  "/img/icono16.png",
+    "32":  "/img/icono32.png",
+    "48":  "/img/icono48.png",
+    "60": "/img/icono60.png",
+    "90": "/img/icono90.png",
+    "120": "/img/icono120.png",
+    "128": "/img/icono128.png",
+    "256": "/img/icono256.png"
+    },  
+	"permissions": {
+		"geolocation": {
+			"description": "Required to show your current location."
+		}
+	},
+	"developer": {
+        "name":"Salvador Camacho Soto",
+        "url":"http://salvacam.tk"
+    }
+}
