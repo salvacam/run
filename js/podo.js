@@ -382,8 +382,7 @@ function init() {
         });
     } else {
         cajaMapa.innerHTML = "No hay soporte de geolocalización";
-    }
-   
+    }   
 
     btBorrar.addEventListener("click", function () {
         eliminar()
