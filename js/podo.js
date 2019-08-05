@@ -321,7 +321,7 @@ function mostrarHistorial() {
 }
 
 function notifyMe(numeroKm) {
-    alert(numeroKm);
+    //alert(numeroKm);
     let textNotification = numeroKm + " km";
 
     if (Notification) {
