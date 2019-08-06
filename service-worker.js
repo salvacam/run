@@ -1,28 +1,21 @@
-var cacheName = 'horarios-v1.1.07';
+var cacheName = 'run-v0.0.01';
 
-var filesToCache = []
-/*
+var filesToCache = [
   './',
   './index.html',
-  './js/main.min.js',
-  './css/style.min.css',
-
-  './fonts/fontawesome-webfont.woff2?v=4.7.0',
-  './fonts/fontawesome-webfont.woff?v=4.7.0',
-  './fonts/fontawesome-webfont.ttf?v=4.7.0',
-  './fonts/fontawesome-webfont.svg?v=4.7.0',
-  './fonts/fontawesome-webfont.eot?v=4.7.0',
-
-  './fonts/FontAwesome.otf',
-  './fonts/fontawesome-webfont.eot',
-  './fonts/fontawesome-webfont.svg',
-  './fonts/fontawesome-webfont.ttf',
-  './fonts/fontawesome-webfont.woff',
-  './fonts/fontawesome-webfont.woff2',
-  
-  './img/icon.png'
+  './js/main.js',
+  './css/framework.min.css',  
+  './img/icon.png',
+  './img/icon-48x48.png',
+  './img/icon-96x96.png',
+  './img/icon-128x128.png',
+  './img/icon-144x144.png',
+  './img/icon-192x192.png',
+  './img/icon-512x512.png',
+  './sound/end.ogg',
+  './sound/gong.ogg'
 ];
-*/
+
 self.addEventListener('install', function(e) {
   console.log('[ServiceWorker] Install_');
   e.waitUntil(
@@ -38,7 +31,7 @@ self.addEventListener('activate', function(e) {
   e.waitUntil(
     caches.keys().then(function(keyList) {
       return Promise.all(keyList.map(function(key) {
-        if (key.startsWith('horarios-')){
+        if (key.startsWith('randomBeep-')){
           if (key !== cacheName) {
             console.log('[ServiceWorker] Removing old cache', key);
             return caches.delete(key);
@@ -48,46 +41,11 @@ self.addEventListener('activate', function(e) {
     })
   );
 });
-/*
+
 self.addEventListener('fetch', function(event) {
-  event.respondWith(caches.match(event.request).then(function(response){
-      if(response)
-        return response;
-      return fetch(event.request).then(function(response){
-        return response;
-      });
-  }));
-});
-*/
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-        caches.match(event.request)
-        .then(function(response) {
-            // Cache hit - return response
-            if (response) {
-                return response;
-            }
-            return fetch(event.request);
-        })
-    );
-});
-/*
-self.addEventListener('notificationclick', function(event) {
-  event.notification.close();
-});
-*/
-/*
-self.addEventListener('notificationclose', function(event) {
-  
-});
-*/
-/*
-self.addEventListener('fetch', function(e) {
-  console.log('[ServiceWorker] Fetch', e.request.url);
-  e.respondWith(
-    caches.match(e.request).then(function(response) {
-      return response || fetch(e.request);
+  event.respondWith(
+    fetch(event.request).catch(function() {
+      return caches.match(event.request);
     })
   );
 });
-*/

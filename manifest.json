@@ -1,7 +1,7 @@
 {
-  "lang": "es",
-  "name": "Podometro",
-  "short_name": "Podometro",
+  "lang": "en",
+  "name": "Run",
+  "short_name": "Run",
   "icons": [{
         "src": "img/icon-48x48.png",
         "sizes": "48x48",
@@ -23,7 +23,7 @@
         "sizes": "512x512",
         "type": "image/png"
       }],
-  "start_url": ".",
+  "start_url": "/run/index.html",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#CCC",
