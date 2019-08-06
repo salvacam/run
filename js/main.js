@@ -138,7 +138,7 @@ var app = {
 			//app.noticeValueCurrent = app.noticeValueData;
 			if (app.distanceDoneValue >= app.noticeValueCurrent) {
 				app.playSound('end');
-				app.notifyMe(distanceCalculated);
+				app.notifyMe(app.distanceDoneValue);
 				app.noticeValueCurrent = parseFloat(app.noticeValueCurrent) + parseFloat(app.noticeValueData);
 			}
 
