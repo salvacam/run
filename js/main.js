@@ -54,8 +54,8 @@ var app = {
 		app.removeLastRun.addEventListener('click', app.deleteLastRun);	
 
 		if (localStorage.getItem("run_lastRun")) {
-			app.lastRunData = parseFloat(localStorage.getItem("run_lastRun")).toFixed(3);
-			if (app.lastRunData > 0) {
+			app.lastRunData = parseFloat(localStorage.getItem("run_lastRun")).toFixed(3);			
+			if (parseFloat(app.lastRunData).toFixed(3) > 0.0) {
 				app.lastRunDiv.classList.remove("hide");
 				app.lastRunValue.innerText = app.lastRunData;
 			}
@@ -205,7 +205,7 @@ var app = {
 	},
 
 	showConfig: function() {
-		if (app.lastRunData > 0) {
+		if (parseFloat(app.lastRunData).toFixed(3) > 0.0) {
 			app.lastRunDiv.classList.remove("hide");
 		}
         if (app.wpid !== null || app.wpid !== undefined) {
@@ -272,7 +272,7 @@ var app = {
 	},
 
 	notifyMe: function(numeroKm) {
-		let textNotification = numeroKm + " km";
+		let textNotification = parseFloat(numeroKm).toFixed(3) + " km";
 	
 		if (Notification) {
 			if (Notification.permission !== "granted") {
