@@ -205,7 +205,9 @@ var app = {
 	},
 
 	showConfig: function() {
-
+		if (app.lastRunData > 0) {
+			app.lastRunDiv.classList.remove("hide");
+		}
         if (app.wpid !== null || app.wpid !== undefined) {
             //console.log("cerrar: " + app.wpid);
             navigator.geolocation.clearWatch(app.wpid);
