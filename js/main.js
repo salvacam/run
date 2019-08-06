@@ -124,8 +124,8 @@ var app = {
 				app.distanceDone.innerText = parseFloat(app.distanceDoneValue).toFixed(3);
 		
         		if(!isNaN(app.distanceDoneValue)) {
-					app.lastRunData = parseFloat(app.lastRunData) + parseFloat(app.distanceDoneValue).toFixed(3);
-					localStorage.setItem("run_lastRun",  app.lastRunData);
+					app.lastRunData = (parseFloat(app.lastRunData) + parseFloat(app.distanceDoneValue)).toFixed(3);
+					localStorage.setItem("run_lastRun",  parseFloat(app.lastRunData).toFixed(3));
 					app.lastRunValue.innerText = parseFloat(app.lastRunData).toFixed(3);
 				}
 			}
