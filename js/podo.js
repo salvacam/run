@@ -21,6 +21,8 @@ var lista; //elementos html
 var listaDist = [];
 var enlacesBorrar;
 
+var audio = new Audio();
+
 function redondeo(numero, decimales) {
     var flotante = parseFloat(numero);
     var resultado = Math.round(flotante * Math.pow(10, decimales)) / Math.pow(10, decimales);
@@ -121,7 +123,9 @@ function ver1(posicion) {
 
         //alert('notificacion_0');
         if (distanciaActual >= notificacionesKm) {
-        //alert('pre_notificacion');
+            audio.src = "./sound/gong.ogg";
+		    audio.play();
+            //alert('pre_notificacion');
             notifyMe(distanciaActual);
             notificacionesKm = notificacionesKm + 0.5;
             //notificacionesKm = 1 + notificacionesKm;
