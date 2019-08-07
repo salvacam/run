@@ -196,6 +196,7 @@ var app = {
 			document.getElementById('okReset').removeEventListener('click', ()=> {});
 			localStorage.removeItem("run_lastRun");
 			app.lastRunDiv.classList.add("hide");
+			app.lastRunData = 0;
 		});
 
 		document.getElementById('closeReset').addEventListener('click', () => {  				
